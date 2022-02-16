@@ -2,7 +2,7 @@
 brand : "Spira"
 titlegrlarge : "Spira – Skopelos Brewers"
 titleenlarge : "Spira - Skopelos Brewers"
-website : "https://www.spirabeers.gr/"
+website : ""
 facebook : "https://facebook.com/SPIRA-Skopelos-Brewers-159198968079788/"
 city : "Skópelos, Magnisia"
 brewery : "Microbrewery"

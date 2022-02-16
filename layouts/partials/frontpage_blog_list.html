@@ -36,8 +36,8 @@
                 data-src="{{ $image700w.RelPermalink }}"
                 class="lazyload" />
                 {{end }}
-                <a class="w-full text-md font-robmono pt-6  leading-6" href="{{ .Permalink}}">{{.Title}}</a>
-                <div class="text-md text-gray-600 pt-2 pb-8">{{ .Params.date.Format "January 2, 2006" }}</div>
+                <a class="w-full text-base font-robmono pt-6  leading-6" href="{{ .Permalink}}">{{.Title}}</a>
+                <div class="text-base text-gray-600 pt-2 pb-8">{{ .Params.date.Format "January 2, 2006" }}</div>
                 <a class="uppercase text-sm font-robmono underline leading-6" href="{{.Permalink}}">Continue Reading</a>
                 </div>
             {{ end }}

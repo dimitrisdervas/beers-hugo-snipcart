@@ -11,4 +11,5 @@ year : "2018"
 address : "Vatero, Kozani, 50132, Greece"
 phone : ""
 slug: "sourdos"
+box: yes
 ---

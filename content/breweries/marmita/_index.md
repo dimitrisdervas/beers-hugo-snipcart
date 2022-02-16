@@ -11,4 +11,5 @@ year : "2018"
 address : "Argonafton 5, Kavala, 65404, Greece"
 phone : "251 0246616"
 slug: "marmita"
+box: yes
 ---

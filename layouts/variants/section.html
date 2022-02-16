@@ -3,14 +3,14 @@
 
     {{ .Scratch.Set "templatePath" "layouts/variants/section.html" }}{{/*  Must Have for debugging  */}}
 
-    {{ if in .File.Dir .Params.handle }} {{/*  so that we show the product page or the list page  */}}
+    {{ if in .File .Params.handle }} {{/*  so that we show the product page or the list page  */}}
 
         {{ .Params.options.number }}
 
         {{ if gt .Params.options.number 1 }}
             multiple {{ .Render "product_options_multiple"}}
         {{ else }}
-            {{ if eq .Params.options.number 1 }}
+            {{ if ge .Params.options.number 1 }}
             one {{ .Render "product_options_one"}}
             {{ else }} 
             zero {{ .Render "product_options_zero"}}

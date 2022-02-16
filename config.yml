@@ -9,6 +9,7 @@ taxonomies:
     product: products
     collection_lv2: collection_lv2s
     blogtag: blogtags
+    brewery: breweries
 languages:
     gr:
         title: Παντοπωλείο
@@ -118,3 +119,7 @@ ignoreErrors : "error-remote-getjson"
 
 minify:
  disableJSON: true
+
+module:
+  imports:
+    - path: github.com/dimitrisdervas/hugo_create_pages

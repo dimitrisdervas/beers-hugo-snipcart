@@ -11,4 +11,5 @@ year : "2001"
 address : "12th km Rethymno-Spili, Rethymno, Crete, 74100, Greece"
 phone : "83 1041243"
 slug: "brink-s"
+status: closed
 ---

@@ -11,4 +11,5 @@ year : ""
 address : ""
 phone : ""
 slug: "ipeiros-mikrozythopoiia"
+status: closed
 ---

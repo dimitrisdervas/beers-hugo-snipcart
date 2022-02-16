@@ -11,4 +11,5 @@ year : ""
 address : ""
 phone : ""
 slug: "brewtiful"
+box: yes
 ---

@@ -11,4 +11,5 @@ year : "2020"
 address : "Amynta 1, Serres, 62100, Greece"
 phone : ""
 slug: "utopia"
+status: closed
 ---

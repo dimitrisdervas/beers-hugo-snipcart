@@ -11,4 +11,5 @@ year : "2017"
 address : "Anagenniseos 1, Athens, 17236, Greece"
 phone : "2106136700"
 slug: "asylum"
+status: closed
 ---

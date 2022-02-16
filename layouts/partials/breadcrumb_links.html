@@ -9,7 +9,7 @@
     {{/*  HOME LINK   */}}
 <li class="flex items-center"> <a href="/"><span class="pb-1 border-b border-gray-800">{{ i18n "home" }}</span></a> </li>
 
-{{ if in .File.Dir "variants" }}   
+{{ if in .File "variants" }}   
     <template x-for="breadcrumb in Object.values(links)">
         <div class="flex w-full items-center justify-start">
             <template x-if="collectionTerm === breadcrumb.path">
@@ -28,7 +28,7 @@
 
 {{/*  CHECK if in collections  */}}
 
-{{ if in .File.Dir "collections/"}}
+{{ if in .File "collections/"}}
     {{ range $index , $breadcumblinks := split .RelPermalink "/"  }}
         {{ $loop := len . }}
         {{ if gt $loop 0 }}

@@ -15,35 +15,20 @@ const px = (px) => `${px}px`;
 
 module.exports = {
   // See https://tailwindcss.com/docs/configuration#important
-  purge: {
+  content: {
     enabled: process.env.HUGO_ENVIRONMENT === "production",
-    content: ["./hugo_stats.json", "./layouts/**/*.html"],
-    extractors: [
-      {
-        extractor: (content) => {
-          let els = JSON.parse(content).htmlElements;
-          return els.tags.concat(els.classes, els.ids);
-        },
-        extensions: ["json"],
-      },
-    ],
-    mode: "all",
+    content: ["./hugo_stats.json", "./layouts/**/*.html"]
   },
   theme: {
     extend: {
       fontFamily: {
         robregular: ["Roboto-Regular"],
         robmono: ["Roboto-mono"],
+        code: ["source code pro", "monospace"],
       },
     },
   },
-  variants: {
-    extend: {
-      backgroundColor: ['checked'],
-      borderColor: ['checked'],
-    }
-  },
-  plugins: [typography],
+  plugins: [require("@tailwindcss/typography")]
 };
 
 // https://github.com/bep/hugo-starter-tailwind-basic/blob/master/tailwind.config.js

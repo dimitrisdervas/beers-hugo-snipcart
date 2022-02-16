@@ -2,7 +2,7 @@
 brand : "Toul&#39;s"
 titlegrlarge : "Toul’s BreΑχαικός Ζύθος)"
 titleenlarge : "Toul&#39;s Brews - Achaikos Zythos"
-website : "https://www.facebook.com/Touls-Brews-Independent-Greek-Brewery-108738360505064/"
+website : "https://achaikoszythos.gr/"
 facebook : "https://facebook.com/Touls-Brews-Independent-Greek-Brewery-10873836050"
 city : "Patra, Achaia"
 brewery : "Microbrewery"

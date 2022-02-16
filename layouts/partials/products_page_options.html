@@ -1,6 +1,6 @@
 {{ $numberVariants := .numberVariants }}
 <div class="flex flex-col">
-    {{ if gt $numberVariants 1 }}
+
     <div class="selection mb-4">
 
         {{/*  OPTIONS  */}}
@@ -12,39 +12,42 @@
             {{ end}}
 
             {{/*  OPTIONS BUTTONS  */}}
-            {{ range .context.Pages  }}   
-                <button 
-                    class=" mr-4
-                            border-2 border-gray-200 
-                            text-gray-800  text-sm uppercase
-                            flex items-center px-4 py-3 my-2 justify-center
-                            hover:border-gray-800 hover:text-gray-800 
-                            @click:{'border-gray-800'}
-                            @click.away:{'border-gray-200'}
-                        "
-                    :class="{ 'border-gray-800' : id === '{{.Params.variant_sku}}' }"
-                    type="button"
-                    id="{{.Params.variant_sku}}"
-                    x-ref="{{.Params.variant_sku}}"      
-                    x-on:click="
-                        id = '{{.Params.variant_sku}}',
-                        url = '{{ .Path  }}'
-                        price = '{{.Params.variant_price}}',
-                        title= '{{ .Params.handle }}',
-                        {{ partial "resources_image_resize.html" (dict "context" . "ImagesResources" $.ImagesResources ) }}
-                        option= '{{ .Params.option1_name }}'
-                        value='{{.Params.option1_value}}',
-                        stock='{{.Params.variant_inventory_qty}}'
-                        option1Name= '{{.Params.option1_name}}',
-                        option1Value= '{{.Params.option1_value}}' 
-                    ">          
-                    {{ .Params.option1_value }}{{ with .Params.option2_value }} / {{ . }}{{ end }}
-                </button>
+
+            {{ range .context.Pages  }} 
+            {{/*  show options button only if not empty  */}}
+                {{ if .Params.option1_value }}  
+                    <button 
+                        class=" mr-4
+                                border-2  
+                                text-gray-800 text-sm uppercase
+                                flex items-center px-4 py-3 my-2 justify-center
+                                hover:border-gray-800 hover:text-gray-800 
+                                font-robmono
+                            "
+                        :class="{ 'border-gray-800' : option1Value === '{{.Params.option1_value}}' }"
+                        type="button"
+                        id="{{.Params.variant_sku}}"
+                        x-ref="{{.Params.variant_sku}}"      
+                        @click="
+                            id = '{{.Params.variant_sku}}',
+                            url = '{{ .Path  }}'
+                            price = '{{.Params.variant_price}}',
+                            title= '{{ .Params.handle }}',
+                            {{ partial "resources_image_resize.html" (dict "context" . "ImagesResources" $.ImagesResources ) }}
+                            option= '{{ .Params.option1_name }}'
+                            value='{{.Params.option1_value}}',
+                            stock='{{.Params.variant_inventory_qty}}'
+                            option1Name= '{{.Params.option1_name}}',
+                            option1Value= '{{.Params.option1_value}}' 
+                        ">          
+                        {{ .Params.option1_value }}{{ with .Params.option2_value }} / {{ . }}{{ end }}
+                    </button>
+                {{ end }}
             {{ end }}
         </div>
 
     </div>
-    {{ end}}
+
 
     {{ partial "products_snipcart_button.html" . }}
 

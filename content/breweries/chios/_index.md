@@ -11,4 +11,5 @@ year : "2012"
 address : "Agiou Mina 78, Chios, 82100, Greece"
 phone : "30 2271033107"
 slug: "chios"
+box: yes
 ---

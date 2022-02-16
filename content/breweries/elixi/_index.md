@@ -2,7 +2,7 @@
 brand : "Elixi"
 titlegrlarge : "Έλιξη Μικροζυθοποιία"
 titleenlarge : "ELIXI S.A."
-website : "http://www.delphibeer.gr/contact_info_eng.html"
+website : "https://www.elixibrewery.com/"
 facebook : "https://www.facebook.com/ElixiBrewery/"
 city : "Lykovrisi, Attiki"
 brewery : "Microbrewery"

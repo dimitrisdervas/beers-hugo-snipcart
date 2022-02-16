@@ -7,7 +7,7 @@
     {{ partial "breadcrumb_collections_paginate.html" . }}
 {{ end }}
 
-{{ if in .File.Dir "collections" }}
+{{ if in .File "collections" }}
     {{ partial "breadcrumb_taxonomy_select.html" . }}
 {{ end }}
 

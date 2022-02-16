@@ -11,4 +11,6 @@ year : "2020"
 address : "Xiropigado, Nafpaktos, 30300, Greece"
 phone : "2634087777"
 slug: "ploumis"
+box: yes
+
 ---

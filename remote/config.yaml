@@ -1,0 +1,14 @@
+disableKinds:
+  - sitemap
+  - taxonomy
+  - term
+outputs:
+  home:
+    - html
+caches:
+  getjson:
+    maxAge: 0
+  getresource:
+    dir: :cacheDir/:project
+    maxAge: 0
+

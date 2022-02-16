@@ -2,7 +2,7 @@
 brand : "Methia"
 titlegrlarge : "Μεθιά"
 titleenlarge : "Methia Beer"
-website : "https://www.facebook.com/methiabeer/"
+website : ""
 facebook : "https://facebook.com/methiabeer/"
 city : ""
 brewery : "Commercial Brewery"

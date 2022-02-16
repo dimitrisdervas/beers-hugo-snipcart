@@ -1,0 +1,179 @@
+<div    class="fixed z-50 overflow-scroll top-0 right-0 w-96 h-full bg-slate-900 p-4 shadow-lg " 
+        x-show="pageVariables" 
+        @click.away="pageVariables = false"> 
+   
+        <div class="flex justify-start flex-wrap px-2 bg-slate-600">
+
+        {{/*  Template to edit
+        File in Content to change
+        Frontmatter 
+        if term show taxonmy variables  */}}
+        {{ if eq .Kind "term"}}
+<h2 class="w-full py-2 px-2 text-white font-bold">This Page is a Term  </br> Number of Pages in the term ({{ len .Data.Pages}})</h2>
+            {{ range .Data.Pages }}
+                    <a class="" href="{{ .Permalink}}">{{ .Params.name }}{{ .Params.handle }} ({{.Kind}} )</a>
+            {{ end }}
+
+        {{ end}}
+
+        {{ if .IsSection }}
+        <div class="squares w-full mb-4">
+            <h2 class="w-full py-2 px-2 text-white font-bold">This Page is a Section </br> Number of Pages in the section ({{ len .Pages}})</h2>
+                <h2 class="text-white px-2 w-full py-1"> {{ .Title }}</h2>
+                <div class="">
+                    <h2 class="text-white px-2 w-full py-1">Pages that belong to the Section</h2>
+                    <div class="text-white px-2 w-full py-1">if you range  .Pages </div>
+                    <ol class="list-decimal">
+                    {{ range  .Pages }}
+                       <li><a class="variable_value" href="{{.RelPermalink}}"> {{.RelPermalink }}</a></li>
+                    {{end }}
+                    </ol>
+                </div>
+                <div class="flex flex-col">
+                        <h2 class="text-pink-300 px-2 w-full py-1">.RegularPages</h2>
+                        <ol class="list-decimal">
+                    {{ range first 5 .RegularPages}}
+                    <li><a class="variable_value "  href="{{.RelPermalink}}">{{ .RelPermalink }}</a></li>
+                    {{ end }}
+                    </ol>
+                </div>
+                <div class="flex flex-col">
+                        <h2 class="text-pink-300 px-2 w-full py-1">.RegularPagesRecursive</h2>
+                        <ol class="list-decimal">
+                    {{ range first 5 .RegularPagesRecursive}}
+                    <li><a class="variable_value "  href="{{.RelPermalink}}">{{ .RelPermalink }}</a></li>
+                    {{ end }}
+                </ol>
+                </div>
+        </div>
+        {{ end}}
+
+
+        <div class=" flex flex-wrap w-full">
+            <div class="page_variables flex flex-wrap">                    
+                    <div class="variable_title w-full text-pink-300"> .RelPermalink</div> 
+                    <div class="variable_value"> {{.RelPermalink }}</div>
+            </div>
+            <div class="squares w-full mb-4">
+                    <h2 class="bg-slate-300 px-2 w-full mb-2">Checks</h2>
+                <div class="page_variables"> 
+                    <div class="variable_title">.Page.BundleType</div>
+                    <div class="variable_value"> {{ .Page.BundleType }}</div></div>
+                <div class="page_variables"> 
+                    <div class="variable_title">.Type </div>
+                    <div class="variable_value"> {{.Type }}</div></div>
+                <div class="page_variables"> 
+                    <div class="variable_title">.Weight </div>
+                    <div class="variable_value"> {{.Weight }}</div></div>
+                <div class="page_variables"> 
+                    <div class="variable_title">.Draft </div>
+                    <div class="variable_value"> {{.Draft }}</div></div>
+                <div class="page_variables"> 
+                    <div class="variable_title">.Kind </div>
+                    <div class="variable_value"> {{.Kind }}</div></div>
+                <div class="page_variables"> 
+                    <div class="variable_title">.Language </div>
+                    <div class="variable_value"> {{.Language }}</div></div>
+                <div class="page_variables"> 
+                    <div class="variable_title">.IsHome </div>
+                    <div class="variable_value"> {{.IsHome }}</div></div>
+                <div class="page_variables"> 
+                    <div class="variable_title">.IsNode </div>
+                    <div class="variable_value"> {{.IsNode }}</div></div>
+                <div class="page_variables"> 
+                    <div class="variable_title">.IsPage </div>
+                    <div class="variable_value"> {{.IsPage }}</div></div>
+                <div class="page_variables"> 
+                    <div class="variable_title">.IsSection </div>
+                    <div class="variable_value"> {{.IsSection }}</div></div>
+                <div class="page_variables"> 
+                    <div class="variable_title">.IsTranslated </div>
+                    <div class="variable_value"> {{.IsTranslated }}</div></div>
+                </div>
+            <div class="squares w-full mb-4">
+                    <h2 class="bg-slate-300 px-2 w-full mb-2">Translations</h2>
+                <div class="page_variables">                    
+                        <div class="variable_title text-pink-300"> .Language</div> 
+                        <div class="variable_value"> {{.Language }}</div></div>
+                <div class="page_variables">                    
+                        <div class="variable_title text-pink-300"> .IsTranslated</div> 
+                        <div class="variable_value"> {{.IsTranslated }}</div></div>
+                <div class="page_variables">                    
+                        <div class="variable_title text-pink-300"> .Translations</div> 
+                        <div class="variable_value"> {{.Translations }}</div></div>
+                <div class="page_variables flex flex-wrap mb-2">                    
+                        <div class="variable_title text-pink-300 w-full"> .TranslationKey</div> 
+                        <div class="variable_value"> {{.TranslationKey }}</div></div>
+                </div>
+            <div class="squares w-full mb-4">
+                    <h2 class="bg-slate-300 px-2 w-full mb-2 ">Links</h2>
+                <div class="page_variables">
+                    
+                        <div class="variable_title text-pink-300"> .Title</div> 
+                        <div class="variable_value"> {{.Title }}</div></div>
+                <div class="page_variables">                    
+                        <div class="variable_title text-pink-300"> .LinkTitle</div> 
+                        <div class="variable_value"> {{.LinkTitle }}</div></div>
+                <div class="page_variables flex flex-wrap mb-2 "> 
+                    <div class="variable_title w-full text-pink-300"> .Permalink</div> 
+                    <div class="variable_value text-sm break-words"> {{.Permalink }}</div></div>
+                <div class="page_variables flex flex-wrap mb-2"> 
+                    <div class="variable_title w-full text-pink-300"> .RelPermalink</div> 
+                    <div class="variable_value text-sm break-words"> {{.RelPermalink }}</div></div>
+                <div class="page_variables">                    
+                        <div class="variable_title text-pink-300"> .Aliases</div> 
+                        <div class="variable_value"> {{.Aliases }}</div></div>
+                </div>
+            <div class="squares w-full">
+                    <a  href="https://gohugo.io/variables/files/" 
+                        class="bg-gray-500 px-2 w-full mb-4">
+                        File Variables
+                    </a>
+                {{ with .File }}
+                <div class="page_variables flex flex-wrap mb-2">
+                    <div class="variable_title w-full text-pink-300">.File</div> 
+                    <div class="variable_value"> {{ . }}</div></div>
+                <div class="page_variables flex flex-wrap mb-2">
+                    <div class="variable_title w-full text-pink-300">.File.Path</div> 
+                    <div class="variable_value"> {{ .Path }}</div></div>
+                <div class="page_variables flex flex-wrap mb-2">
+                    <div class="variable_title w-full text-pink-300">.File.LogicalName</div> 
+                    <div class="variable_value"> {{.LogicalName}}</div></div>
+                <div class="page_variables flex flex-wrap mb-2">
+                    <div class="variable_title w-full text-pink-300">.File.TranslationBaseName</div> 
+                    <div class="variable_value"> {{.TranslationBaseName}}</div></div>
+                <div class="page_variables flex flex-wrap mb-2">
+                    <div class="variable_title w-full text-pink-300">.File.ContentBaseName</div> 
+                    <div class="variable_value"> {{.ContentBaseName}}</div></div>
+                <div class="page_variables flex flex-wrap mb-2">
+                    <div class="variable_title w-full text-pink-300">.File.BaseFileName</div> 
+                    <div class="variable_value"> {{.BaseFileName}}</div></div>
+                <div class="page_variables flex flex-wrap mb-2">
+                    <div class="variable_title w-full text-pink-300">.File.Ext</div> 
+                    <div class="variable_value"> {{.Ext}}</div></div>
+                <div class="page_variables flex flex-wrap mb-2">
+                    <div class="variable_title w-full text-pink-300">.File.Lang</div> 
+                    <div class="variable_value"> {{.Lang}}</div></div>
+                <div class="page_variables flex flex-wrap mb-2">
+                    <div class="variable_title w-full text-pink-300">.File.Dir</div> 
+                    <div class="variable_value"> {{ with .File }}{{ .Dir }}{{ end }}</div></div>
+                <div class="page_variables flex flex-wrap mb-2">
+                    <div class="variable_title w-full text-pink-300">.File.UniqueID</div> 
+                    <div class="variable_value"> {{.UniqueID}}</div></div>
+                {{ end }}
+            </div>
+            <div class="squares w-full">
+                    <h2 class="bg-gray-100 px-2 w-full py-1">In Section</h2>
+                <div class="page_variables">
+                        <div class="variable_title">Next</div> 
+                        <div class="variable_value"> {{.Next }}</div></div>
+                <div class="page_variables">
+                        <div class="variable_title">Prev</div> 
+                        <div class="variable_value"> {{.Prev }}</div></div>
+                <div class="page_variables">
+                        <div class="variable_title">PrevInSection</div> 
+                        <div class="variable_value"> {{.PrevInSection }}</div></div>
+                </div>
+        </div>
+    </div>
+ </div>

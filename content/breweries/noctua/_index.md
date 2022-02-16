@@ -2,7 +2,7 @@
 brand : "Noctua"
 titlegrlarge : "Athens Noctua Microbrewery"
 titleenlarge : "Noctua Brewery"
-website : "https://www.facebook.com/noctuabeer/"
+website : ""
 facebook : "https://facebook.com/noctuabeer/"
 city : "Athens"
 brewery : "Microbrewery"

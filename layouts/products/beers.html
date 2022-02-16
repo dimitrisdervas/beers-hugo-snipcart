@@ -1,7 +1,8 @@
-{{ define "main" }}
-{{/*  Beers Template  */}}
+{{ define "main" }} {{/* Beers Template */}}
 
-<div class="flex w-full flex-wrap" x-data="{ 
+<div
+  class="flex w-full flex-wrap"
+  x-data="{ 
 
     {{ range first 1 .Data.Pages }}  
     title: '{{.Params.name}}',
@@ -20,37 +21,38 @@
     box24: '48',
     tab: 'content'
     {{ end }}
-    }">
+    }"
+>
+  {{/* first 1/3 */}}
+  <div class="w-full md:w-1/3 px-4">
+    {{/* Title */}} {{/*
+    <div class="w-full">{{ .Title }}</div>
+    */}}
+    <h2 class="text-3xl font-bold mb-2 px-4 h-16" x-text="title">
+      {{ .Params.name }}
+    </h2>
 
-   
+    {{/* PRICE */}}
+    <div class="flex items-baseline py-2 px-4">
+      <div
+        x-text="price +  '€' "
+        class="flex-inline text-2xl font-bold pr-2 font-sans"
+      ></div>
+      <div
+        x-text="retail + '€' "
+        class="flex-inline text-lg font-normal line-through font-sans"
+        x-show="retail > 0"
+      ></div>
+    </div>
 
-
-
-{{/*  first 1/3  */}}
-<div class="w-full md:w-1/3 px-4">
-
-{{/*  Title  */}}
-{{/*  <div class="w-full">{{ .Title }}</div>  */}}
-<h2 class="text-3xl font-bold mb-2 px-4 h-16" x-text="title" >{{ .Params.name }}</h2>
-
-{{/*  PRICE  */}}
-<div class="flex items-baseline py-2 px-4">
-<div x-text="price +  '€' "  class="flex-inline text-2xl font-bold pr-2 font-sans"></div>
-<div x-text="retail + '€' "  class="flex-inline text-lg font-normal line-through font-sans" x-show="retail > 0"></div>
-</div>
-
-
-{{/*  Options block  */}}
-<div class="flex flex-col">
-    <div class="selection">
+    {{/* Options block */}}
+    <div class="flex flex-col">
+      <div class="selection">
         <div class="flex justify-start flex-wrap">
-        {{ range .Pages  }}   
-            <button 
-            class="w-40 h-16 border-2 border-gray-200 text-gray-400 
-            flex items-center px-4 py-2 m-2
-             hover:border-gray-800 hover:text-gray-800 
-             @click:border-gray-800 text-gray-800"
-            type="radio" 
+          {{ range .Pages }}
+          <button
+            class="w-40 h-16 border-2 border-gray-200 text-gray-400 flex items-center px-4 py-2 m-2 hover:border-gray-800 hover:text-gray-800 @click:border-gray-800 text-gray-800"
+            type="radio"
             x-on:click="
             id = '{{.Params.id}}',
             url = '{{.Params.url}}'
@@ -59,94 +61,153 @@
             image= '/uploads/beers/{{.Params.image}}',
             value='{{.Params.name}}',
             stock='{{.Params.stock}}' 
-            ">
-            
-            
+            "
+          >
             {{ if eq .Params.materials "bottle" }}
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" 
-            viewBox="241.10612966780684 69.29745510286142 125.89788672639816 478.87559374033214" 
-            width="30" height="40"><defs><path d="M364 293.14C363.1 264.15 337.27 247.46 336.37 229.2C335.49 217.14 328.43 120.73 327.54 108.68C338.04 104.04 329.97 88.29 328.23 83.07C334.53 73.8 327.54 72.95 326.16 71.49C307.28 69.76 298.44 70.04 277.75 71.49C277.75 71.49 269.87 77.93 277.75 82.56C279.55 85.74 264.27 102.8 277.75 108.59C276.82 120.76 269.35 218.09 268.41 230.25C265.71 250.84 244.2 262 242.11 288.67C242.28 312.43 243.66 502.49 243.84 526.24C243.88 532.68 246.53 538.86 247.88 545.17C258.91 545.17 347.19 545.17 358.23 545.17C359.6 538.87 362.3 532.7 362.34 526.24C362.34 526.24 363.84 316.45 364 293.14Z" id="d7M2h2jCDF"></path></defs><g><g><use xlink:href="#d7M2h2jCDF" opacity="1" fill="#292d29" fill-opacity="1"></use><g><use xlink:href="#d7M2h2jCDF" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="0.1" stroke-opacity="0"></use></g></g></g></svg>
+            <svg
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="241.10612966780684 69.29745510286142 125.89788672639816 478.87559374033214"
+              width="30"
+              height="40"
+            >
+              <defs>
+                <path
+                  d="M364 293.14C363.1 264.15 337.27 247.46 336.37 229.2C335.49 217.14 328.43 120.73 327.54 108.68C338.04 104.04 329.97 88.29 328.23 83.07C334.53 73.8 327.54 72.95 326.16 71.49C307.28 69.76 298.44 70.04 277.75 71.49C277.75 71.49 269.87 77.93 277.75 82.56C279.55 85.74 264.27 102.8 277.75 108.59C276.82 120.76 269.35 218.09 268.41 230.25C265.71 250.84 244.2 262 242.11 288.67C242.28 312.43 243.66 502.49 243.84 526.24C243.88 532.68 246.53 538.86 247.88 545.17C258.91 545.17 347.19 545.17 358.23 545.17C359.6 538.87 362.3 532.7 362.34 526.24C362.34 526.24 363.84 316.45 364 293.14Z"
+                  id="d7M2h2jCDF"
+                ></path>
+              </defs>
+              <g>
+                <g>
+                  <use
+                    xlink:href="#d7M2h2jCDF"
+                    opacity="1"
+                    fill="#292d29"
+                    fill-opacity="1"
+                  ></use>
+                  <g>
+                    <use
+                      xlink:href="#d7M2h2jCDF"
+                      opacity="1"
+                      fill-opacity="0"
+                      stroke="#000000"
+                      stroke-width="0.1"
+                      stroke-opacity="0"
+                    ></use>
+                  </g>
+                </g>
+              </g>
+            </svg>
             {{else}}
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet" 
-            viewBox="211.8288158562454 129.80431460923046 190.84030392755744 337.9177642896352" 
-            width="30" height="20"><defs><path d="M232.28 140.94C231.59 147.03 230.97 153.06 227.85 158.12C226.72 159.95 217.63 174.66 216.5 176.5C214.49 179.75 212.83 182.59 212.83 185.69C212.83 189.87 212.83 210.78 212.83 248.41L212.83 331.96C212.83 391.73 212.83 424.94 212.83 431.58C212.83 436.77 213.52 441.77 217.81 444.43C219.12 445.24 229.62 451.73 230.93 452.54C233.14 453.92 233.83 456.49 234.87 457.94C237.23 461.12 239.72 464.72 245.28 464.72C257.48 464.72 355.02 464.72 367.22 464.72C372.82 464.72 375.31 461.12 377.62 457.94C378.73 456.49 379.49 453.92 381.71 452.54C383.01 451.73 393.39 445.24 394.69 444.43C398.98 441.8 399.67 436.79 399.67 431.58C399.67 424.94 399.67 391.73 399.67 331.96L399.67 248.41C399.67 210.78 399.67 189.87 399.67 185.69C399.67 182.58 398.15 179.81 396.14 176.5C395 174.66 385.92 159.95 384.78 158.12C381.67 153.06 380.97 147.01 380.35 140.94C384.57 137.55 382.84 131.91 380.35 130.8C370.48 130.8 321.14 130.8 232.33 130.8C229.48 135.33 229.47 138.71 232.28 140.94Z" id="asiGkmjux"></path></defs><g><g><use xlink:href="#asiGkmjux" opacity="1" fill="#363636" fill-opacity="1"></use><g><use xlink:href="#asiGkmjux" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="0.1" stroke-opacity="0"></use></g></g></g></svg>
-            {{end}}
-            {{ .Params.volume }}
-            {{ if eq .Params.sizes "single" }}{{else}}- {{.Params.sizes}}{{end}}
-            </button>
-        {{ end }}
+            <svg
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="211.8288158562454 129.80431460923046 190.84030392755744 337.9177642896352"
+              width="30"
+              height="20"
+            >
+              <defs>
+                <path
+                  d="M232.28 140.94C231.59 147.03 230.97 153.06 227.85 158.12C226.72 159.95 217.63 174.66 216.5 176.5C214.49 179.75 212.83 182.59 212.83 185.69C212.83 189.87 212.83 210.78 212.83 248.41L212.83 331.96C212.83 391.73 212.83 424.94 212.83 431.58C212.83 436.77 213.52 441.77 217.81 444.43C219.12 445.24 229.62 451.73 230.93 452.54C233.14 453.92 233.83 456.49 234.87 457.94C237.23 461.12 239.72 464.72 245.28 464.72C257.48 464.72 355.02 464.72 367.22 464.72C372.82 464.72 375.31 461.12 377.62 457.94C378.73 456.49 379.49 453.92 381.71 452.54C383.01 451.73 393.39 445.24 394.69 444.43C398.98 441.8 399.67 436.79 399.67 431.58C399.67 424.94 399.67 391.73 399.67 331.96L399.67 248.41C399.67 210.78 399.67 189.87 399.67 185.69C399.67 182.58 398.15 179.81 396.14 176.5C395 174.66 385.92 159.95 384.78 158.12C381.67 153.06 380.97 147.01 380.35 140.94C384.57 137.55 382.84 131.91 380.35 130.8C370.48 130.8 321.14 130.8 232.33 130.8C229.48 135.33 229.47 138.71 232.28 140.94Z"
+                  id="asiGkmjux"
+                ></path>
+              </defs>
+              <g>
+                <g>
+                  <use
+                    xlink:href="#asiGkmjux"
+                    opacity="1"
+                    fill="#363636"
+                    fill-opacity="1"
+                  ></use>
+                  <g>
+                    <use
+                      xlink:href="#asiGkmjux"
+                      opacity="1"
+                      fill-opacity="0"
+                      stroke="#000000"
+                      stroke-width="0.1"
+                      stroke-opacity="0"
+                    ></use>
+                  </g>
+                </g>
+              </g>
+            </svg>
+            {{end}} {{ .Params.volume }} {{ if eq .Params.sizes "single"
+            }}{{else}}- {{.Params.sizes}}{{end}}
+          </button>
+          {{ end }}
         </div>
+      </div>
 
+      {{/* Snipcart button */}}
 
+      <div
+        x-text="stock"
+        x-show="stock === 'out of stock' "
+        class="border-2 border-gray-300 text-gray-300 w-full py-2 uppercase text-base text-center"
+      ></div>
+
+      <button
+        x-show="stock != 'out of stock' "
+        class="snipcart-add-item border-2 border-black w-full py-2 uppercase text-base"
+        x-bind:data-item-url="url"
+        x-bind:data-item-name="title"
+        x-bind:data-item-id="id"
+        x-bind:data-item-quantity="quantity"
+        x-bind:data-item-image="image"
+        x-bind:data-item-price="price"
+        x-bind:data-item-description="description"
+        x-bind:data-item-price-box6="12"
+        x-bind:data-item-price-box12="24"
+        x-bind:data-item-price-box24="48"
+      >
+        Add to cart
+      </button>
+    </div>
+    {{/* end options block */}}
+  </div>
+  {{/* end first 1/3 */}} {{/* second 1/3 */}}
+  <div class="w-full md:w-1/3 px-4">
+    {{/* Image block */}}
+
+    <div class="flex justify-center w-full items-center h-full">
+      <img x-bind:src="image" x-bind:alt="title" />
     </div>
 
+    {{/* end Image block */}}
+  </div>
+  {{/* end second 1/3 */}} {{/* third 1/3 */}}
+  <div class="w-full md:w-1/3 px-4">
+    <div>
+      <button
+        class="bg-gray-200 px-3 py-4 @click:bg-gray-300"
+        @click="tab = 'content'"
+      >
+        Περιγραφή
+      </button>
+      <button
+        class="bg-gray-200 px-3 py-4 @click:bg-gray-300"
+        @click="tab = 'details'"
+      >
+        Χαρακτηριστικά
+      </button>
 
-
-
-
-
-
-
-{{/*  Snipcart button  */}}
-
-<div x-text="stock" 
-x-show="stock === 'out of stock' " 
-class="border-2 border-gray-300 text-gray-300 w-full py-2 uppercase text-md text-center">
-</div>
-
-<button x-show="stock != 'out of stock' "
-class="snipcart-add-item border-2 border-black w-full py-2 uppercase text-md"
-x-bind:data-item-url="url"
-x-bind:data-item-name="title"
-x-bind:data-item-id="id"
-x-bind:data-item-quantity = "quantity"
-x-bind:data-item-image="image"
-x-bind:data-item-price="price"
-x-bind:data-item-description="description"
-x-bind:data-item-price-box6="12"
-x-bind:data-item-price-box12="24"
-x-bind:data-item-price-box24="48"
->
-Add to cart
-</button>
-</div>
-{{/*  end options block  */}}
-</div>
-{{/*  end first 1/3 */}}
-
-
-
-{{/*  second 1/3  */}}
-<div class="w-full md:w-1/3 px-4">
-{{/*  Image block  */}}
-
-<div class="flex justify-center w-full items-center h-full ">
-    <img x-bind:src="image" x-bind:alt="title" />
-</div>
-
-{{/*  end Image block  */}}
-</div>
-{{/*  end second 1/3 */}}
-
-{{/*  third 1/3  */}}
-<div class="w-full md:w-1/3 px-4">
-<div>
-    <button class="bg-gray-200 px-3 py-4 @click:bg-gray-300" @click="tab = 'content'">Περιγραφή</button>
-    <button class="bg-gray-200 px-3 py-4 @click:bg-gray-300" @click="tab = 'details'">Χαρακτηριστικά</button>
-
-    <div class="content py-4"  x-show=" tab ==='content' ">
+      <div class="content py-4" x-show=" tab ==='content' ">
         <div class="leading-relaxed">{{.Content}}</div>
+      </div>
+
+      <div class="igredients py-4" x-show="tab === 'details' ">
+        <div class="p">{{ .Params.alchohol}}</div>
+        <div class="p">{{ .Params.ibu}}</div>
+        <div class="p">{{ delimit .Params.breweries ","}}</div>
+      </div>
     </div>
-
-    <div class="igredients py-4" x-show="tab === 'details' ">
-    <div class="p">{{ .Params.alchohol}}</div>
-    <div class="p">{{ .Params.ibu}}</div>
-    <div class="p">{{ delimit .Params.breweries ","}}</div>
-    </div>
-</div>
-
-
-</div>
-{{/*  end third 1/3  */}}
+  </div>
+  {{/* end third 1/3 */}}
 </div>
 {{ end }}

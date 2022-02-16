@@ -1,0 +1,43 @@
+<div class="bg-slate-900 fixed bottom-20 left-0 flex justify-between items-center shadow-lg">
+
+    {{/*  BUTTON on screnn  */}}
+    <button 
+        class=" flex items-center z-50 bg-slate-900 opacity-40 hover:opacity-100 font-code"
+        @click="top = true"
+        >
+        <div style="flex: 0;
+                    display: flex;
+                    align-items: center;
+                    background-color: #ff3f88;
+                    padding: 25px;
+                    background-image: url(/images/icons/expand.png);
+                    background-repeat: no-repeat;
+                    background-size: 20px;
+                    background-position: 50%;
+                    cursor: pointer;"></div>
+        <div class=" px-4 text-white">Debug</div>
+    </button>
+
+    {{/*  MENU  */}}
+    <div x-show="top"class="font-code" >
+        <button
+        class="hover:bg-pink-800 text-white mx-2 px-2 py-2"
+        x-on:click="pageVariables = true"
+        x-on:click.away="pageVariables = false">Page Variables</button>
+
+        <button
+        class="hover:bg-pink-800 text-white mx-2 px-2 py-2"
+        x-on:click="frontmatter = true"
+        x-on:click.away="frontmatter = false">FrontMatter</button>
+
+        <a class="hover:bg-pink-800 text-white mx-2 px-2 py-2" target="_blank"
+        href="/gr/debug/alltaxonomies/">All Taxonomies</a>
+
+        <a class="hover:bg-pink-800 text-white mx-2 px-2 py-2" target="_blank"
+        href="/gr/debug/allpages/">All Pages</a>
+
+        <button 
+        class="hover:bg-gray-800 text-white px-4 text-sm"
+        @click="top = false">close</button>
+    </div>
+</div>

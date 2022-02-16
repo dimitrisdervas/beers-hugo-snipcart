@@ -2,7 +2,7 @@
 /* https://github.com/bep/hugo-starter-tailwind-basic/blob/master/assets/css/styles.css */
 
 
-@import 'node_modules/swiper/swiper-bundle.css';
+@import './node_modules/swiper/swiper-bundle.css';
 
 @font-face {
     font-family: 'Roboto-Regular';

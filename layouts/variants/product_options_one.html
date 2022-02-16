@@ -11,12 +11,13 @@ Options One  test
 
 {{/*  x-data PAGE   */}} {{ partial "product_page_xdata.html" . }}
 
+<div class="product-page--left">
     {{/*  COlUMN 1,2 / ROW 1   */}}
-        {{/*  TITLE   */}} <div class="col-span-2 col-start-1 row-start-1 pl-8 text-left"> <h2 class="text-2xl  mb-2 " >{{ .Title }}</h2> </div>
+        {{/*  TITLE   */}} <div class="col-span-1 col-start-1 row-start-1 pl-8 text-left"> <h2 class="text-2xl  mb-2 " >{{ .Title }}</h2> </div>
     
 
     {{/* COlUMN 1,2 / ROW 2 */}}
-        <div class="col-span-2  md:row-start-2 md:col-start-1 lg:row-start-2 lg:row-span-2 pl-8">
+        <div class="col-start-1 row-start-1 pl-8">
         {{/*  PRICE     */}} {{ partial "product_page_price.html" . }}
         {{/*  OPTIONS   */}} {{ partial "products_page_options.html" (dict "context" . "numberVariants" $numberVariants "ImagesResources" $.Resources  "default_variant" ($.Scratch.Get "default_variant") ) }}
         </div>
@@ -24,26 +25,34 @@ Options One  test
 {{/*  If there is a gallery but no variants images  */}}
     {{ if .Params.gallery }}
         {{/*  GALLERY THUMBNAILS  */}} {{ partial "product_page_thumbnails.html" (dict "context" . "ImagesResources" .Resources) }}
+</div>
 
+<div class="product-page--center w-full px-8">
         {{/*  GALLERY PRODUCT */}} {{ partial "product_page_gallery.html" . }}
 
 {{/*  If there are variants images  */}}        
     {{ else if gt (len .Pages) 1 }} 
 
         {{/*  GALLERY THUMBNAILS  */}} {{ partial "product_page_thumbnails_option_one.html" (dict "context" . "ImagesResources" .Resources) }}
+</div>
 
+<div class="product-page--center w-full px-8">
         {{/*  GALLERY PRODUCT */}} {{ partial "product_page_gallery.html" . }}
 
 {{/*  If there are no variants images  */}}  
     {{ else }}
+</div>
 
+<div class="product-page--center w-full px-8">
          {{/*  SINGLE PRODUCT IMAGE   */}} {{ partial "resources_product_single_image_resize.html" (dict "context" . "ImagesResources" .Resources)}}
     
     {{ end }}
+</div>
+<div class="product-page--right">
 
     {{/*  COlUMN 3 / ROW 1 */}}
     {{/*  Details */}} {{ partial "product_page_details.html" . }}
-
+</div>
 
 </div>{{/*  End of x-data <div></div>  */}}
 

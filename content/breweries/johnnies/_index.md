@@ -11,4 +11,5 @@ year : "2016"
 address : "Doxato, Drama, 66300, Greece"
 phone : "2521 069500"
 slug: "johnnies"
+box: yes
 ---

@@ -11,16 +11,15 @@
 multiple template
 {{/*  Create x-data for default options  */}}
 <div 
-    class=" grid grid-flow-row grid-cols-2 grid-rows-3 md:grid-cols-5 md:grid-rows lg:grid-cols-7  
+    class=" grid grid-flow-row grid-cols-3 grid-rows-1   
         py-8" 
-    style="grid-template-rows: auto auto 1fr;"
 
     x-data="{ 
     {{/*  DEFAULT VALUES FOR VARIANT   */}}
     {{ $.Scratch.Set "default_variant" .Params.variant_sku }}
     {{ range first 1 .Pages }}  
         {{.Params.variant_sku }}: true,
-        title: '{{.Title}}',
+        title: '{{ .Params.handle }}',
         url: '{{ .Path }}',
         id: '{{.Params.variant_sku }}',
         retail: '{{.Params.variant_retail}}',
@@ -30,11 +29,14 @@ multiple template
         quantity: '1',
         option1Name: '{{.Params.option1_name}}',
         option1Value: '{{.Params.option1_value}}',
+        option2Name: '{{.Params.option2_name}}',
+        option2Value: '{{.Params.option2_value}}',
         stock: '{{ .Params.variant_inventory_qty }}',
         tab: 'content',
+        option1: '{{.Params.option1_value}}',
+        option2: '{{.Params.option2_value}}',
     {{ end }}
-    option1: 'single',
-    option2: 'bottle',
+
     options_json: '',
     ...optionsProducts()
     }"
@@ -61,10 +63,15 @@ multiple template
             {{ end }}
             
             {{ range .Pages }}   
-            options_obj['{{.Params.option1_value}}']['{{.Params.option2_value}}'] =  { 
+            options_obj['{{.Params.option1_value}}']['{{.Params.option2_value}}'] =  {
+                option1Name: '{{.Params.option1_name}}',
+                option1Value: '{{.Params.option1_value}}',
+                option2Name: '{{.Params.option2_name}}',
+                option2Value: '{{.Params.option2_value}}',
                 price: '{{.Params.variant_price}}' , 
                 stock: '{{ .Params.variant_inventory_qty }}',
-                retail: '{{.Params.variant_retail}}'
+                retail: '{{.Params.variant_retail}}',
+                id: '{{.Params.variant_sku}}'
             };
             {{ end }}
 
@@ -76,6 +83,7 @@ multiple template
 
 
 {{/*  first 1/3  */}}
+<div class="product-page--left">
     {{/*  Title  */}}
     <div class="col-span-2 col-start-1 row-start-1 pl-8 text-left"><h2 class="text-2xl  mb-2 " >{{ .Title }}</h2></div>
 
@@ -88,10 +96,12 @@ multiple template
     {{/*  OPTIONS   */}}
         {{ partial "products_page_options_multiple.html" (dict "context" . "numberVariants" $numberVariants "ImagesResources" $.Resources  "default_variant" ($.Scratch.Get "default_variant") ) }}
     </div>
+</div>
 {{/*  end first 1/3 */}}
 
 
 {{/*  second 1/3  */}}
+<div class="product-page--center w-full px-8">
     <div class="flex justify-center col-span-3 row-start-2 md:col-start-3 md:row-start-1 md:row-span-2 lg:row-span-2 lg:row-start-1 px-10">
         {{/*  Image block  */}}
             <div class="flex justify-center md:w-4/5    items-center h-full ">
@@ -119,12 +129,16 @@ multiple template
             </div>
         {{/*  end Image block  */}}
     </div>
+</div>
 {{/*  end second 1/3 */}}
 
 
 
+<div class="product-page--right">
+
 {{/*  COlUMN 3 / ROW 1 */}}
 {{/*  Details */}} {{ partial "product_page_details.html" . }}
+</div>
 
 </div>
 

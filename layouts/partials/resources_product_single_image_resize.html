@@ -1,7 +1,6 @@
 <div class="flex justify-center 
-col-span-3 row-start-2 
-md:col-start-3 md:row-start-1 md:row-span-2 
-lg:col-span-4 lg:row-span-2 lg:row-start-1 " style="min-height: 60vh" >
+col-span-1 col-start-2  
+ " style="min-height: 60vh" >
     {{/*  Image block  */}}
         <div class="flex w-full justify-center" >
 {{ if .ImagesResources }}
@@ -17,6 +16,7 @@ lg:col-span-4 lg:row-span-2 lg:row-start-1 " style="min-height: 60vh" >
     alt="{{ $original }}"
     data-sizes="auto"
     data-parent-fit="contain"
+    data-widths="[295,394,590,700,800]"
     data-srcset="        
     {{ $image295w.RelPermalink }}  295w,    
     {{ $image394w.RelPermalink }}  394w,    
@@ -25,6 +25,7 @@ lg:col-span-4 lg:row-span-2 lg:row-start-1 " style="min-height: 60vh" >
     {{ $image800w.RelPermalink }}  800w
     "
     data-src="{{ $image700w.RelPermalink }}"
+    style="width: 400px; height: 400px;"
     class="lazyload" />
     <!-- noscript pattern -->
     <noscript>

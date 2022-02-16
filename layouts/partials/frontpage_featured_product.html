@@ -164,13 +164,13 @@
     <div 
         x-text="stock" 
         x-show="stock === 0 " 
-        class="border-2 border-gray-300 text-gray-300 w-full py-2 uppercase text-md text-center">
+        class="border-2 border-gray-300 text-gray-300 w-full py-2 uppercase text-base text-center">
     </div>
 <!-- Out of Stock -->
 
 {{/*  Snipcart button  */}}
     <button x-show="stock != 'out of stock' "
-        class="snipcart-add-item border-2 border-black w-full py-2 uppercase text-md"
+        class="snipcart-add-item border-2 border-black w-full py-2 uppercase text-base"
         x-bind:data-item-url="url"
         x-bind:data-item-name="title"
         x-bind:data-item-id="id"

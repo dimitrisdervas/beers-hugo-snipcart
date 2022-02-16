@@ -2,7 +2,7 @@
 brand : "Blame the sun"
 titlegrlarge : "Blame the Sun"
 titleenlarge : "Blame The Sun Brewing"
-website : "https://www.facebook.com/blamethesunbrewing/"
+website : ""
 facebook : "https://facebook.com/blamethesunbrewing/"
 city : "Athens"
 brewery : "Contract Brewer"

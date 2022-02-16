@@ -1,0 +1,10 @@
+---
+{{ range $key, $value := . -}}
+{{- if ne $key "Description" -}}
+{{- $key }}: {{ $value }}
+{{ end -}}
+{{- end -}}
+
+---
+
+{{ .Description }}

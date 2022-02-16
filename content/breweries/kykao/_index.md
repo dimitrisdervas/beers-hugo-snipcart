@@ -11,4 +11,5 @@ year : "2018"
 address : "Platani, Patras, 26504, Greece"
 phone : "2616 007652"
 slug: "kykao"
+box: yes
 ---

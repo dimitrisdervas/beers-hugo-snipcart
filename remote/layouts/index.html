@@ -1,0 +1,40 @@
+{{ $format := "json" }}
+{{ with resources.GetRemote "https://api.airtable.com/v0/appkPpSxGMoyqsHpT/beers?maxRecords=10&view=Grid%20view&api_key=keyQVGtEJqpbYYGS0" }}
+{{ $records := unmarshal .Content  }}
+{{ $records := $records.records }}
+    {{ range $records }}
+        {{ $id := .id}}
+        {{ $createdTime := .createdTime }}
+        {{ $folder := printf "beers/%s_%s/" (urlize .fields.handle_slug) (urlize .fields.IDbrand) }}
+        
+        {{ $filename := printf "%s/%s.md"  $folder $id }} 
+        
+        {{ $file := dict }}
+        {{ if eq $format "json" }}
+            {{ $string := jsonify .fields }} 
+            {{ $resource := resources.FromString $filename $string }} 
+            {{ $file := $resource.RelPermalink }} 
+        {{ else}}
+            {{ $yaml_template := resources.Get "template.yaml" }}
+            {{ $file = resources.ExecuteAsTemplate $filename .fields $yaml_template }}
+        {{end}}
+
+        {{ $output := $file.RelPermalink }}
+    
+        {{ range .fields.image_src}}
+            {{ $filename := .filename }}
+            {{ with $img := resources.GetRemote .url }}
+                {{ with .Err }}
+                    {{ warnf "%s" . }}
+                {{ else }}
+                    {{ $img_filename := printf "%s/%s" $folder (urlize $filename ) }}
+                    {{ $img := $img.Content | resources.FromString $img_filename }}
+                    {{ $img.RelPermalink }}
+                {{ end }}
+            {{ else }}
+                {{ warnf "Unable to obtain remote image." }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+

@@ -1,16 +1,20 @@
-{{/*  Snipcart button  */}}
+{{/* Snipcart button */}}
 
-<div x-show="stock === '0'" 
-    class="border-2 border-gray-300 text-gray-300 w-full py-2 uppercase text-md text-center">
-    {{ i18n "outofstock"}}
+<div
+  x-show="stock === '0'"
+  class="border-2 border-gray-300 text-gray-300 w-full py-2 uppercase text-base text-center"
+>
+  {{ i18n "outofstock"}}
 </div>
 
-<div class="pt-12" x-show="stock === '0'" >
-    
-    {{/*  We have to add the sku of the product that we must order and notify  */}}
+<div class="pt-12" x-show="stock === '0'">
+  {{/* We have to add the sku of the product that we must order and notify */}}
 
-    <p class="font-robmono text-sm pb-2"> Please fill in the form below if you'd like to be notified when it becomes available. </p>
-    <form
+  <p class="font-robmono text-sm pb-2">
+    Please fill in the form below if you'd like to be notified when it becomes
+    available.
+  </p>
+  <form
     method="post"
     action="/contact#newsletter_form"
     id="out_of_stock_form"
@@ -45,17 +49,18 @@
   </form>
 </div>
 
-<button 
-    x-show="stock != '0' "
-    class="snipcart-add-item border-2 border-black w-full py-2 uppercase text-md"
-    x-bind:data-item-url="url"
-    x-bind:data-item-name="title"
-    x-bind:data-item-id="id"
-    x-bind:data-item-quantity = "quantity"
-    x-bind:data-item-image="image700w"
-    x-bind:data-item-price="price"
-    x-bind:data-item-description="description"
-    x-bind:data-item-custom1-name="option1Name"
-    x-bind:data-item-custom1-options="option1Value">
-    {{ i18n "addtocart"}}
+<button
+  x-show="stock != '0' "
+  class="snipcart-add-item border-2 border-black w-full py-2 uppercase text-base font-robmono"
+  x-bind:data-item-url="url"
+  x-bind:data-item-name="title"
+  x-bind:data-item-id="id"
+  x-bind:data-item-quantity="quantity"
+  x-bind:data-item-image="image700w"
+  x-bind:data-item-price="price"
+  x-bind:data-item-description="description"
+  x-bind:data-item-custom1-name="option1Name"
+  x-bind:data-item-custom1-options="option1Value"
+>
+  {{ i18n "addtocart"}}
 </button>

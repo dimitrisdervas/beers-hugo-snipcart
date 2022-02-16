@@ -11,4 +11,6 @@ year : "2016"
 address : "Patriarchou Meletiou Metaxaki 36, Heraklion, 713 04, Greece"
 phone : "281 111 7167"
 slug: "notos"
+box: yes
+
 ---

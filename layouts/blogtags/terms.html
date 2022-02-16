@@ -1,30 +1,27 @@
 {{ define "main"}}
-<div class="mx-auto max-w-screen-xl mb-8 px-16 grid grid-cols-2 gap-8 grid-flow-row">
-<ul>
+<div
+  class="mx-auto max-w-screen-xl mb-8 px-16 grid grid-cols-2 gap-8 grid-flow-row"
+>
+  <ul>
     {{ range .Data.Terms.Alphabetical }}
-            <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> {{ .Count }}</li>
+    <li><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> {{ .Count }}</li>
     {{ end }}
-</ul>
+  </ul>
 
-    {{ range .Data.Pages}}
-        <div class="flex flex-col">
-                        {{ $image := string .Params.image }}
-                        {{ $original := .Resources.GetMatch $image }}
-                        {{ if $original }}  
-                        {{ $image295w := $original.Resize "295x" }} 
-                        {{ $image394w := $original.Resize "394x" }}
-                        {{ $image590w := $original.Resize "590x" }}
-                        {{ $image700w := $original.Resize "700x" }}
-                        {{ $image800w := $original.Resize "800x" }}
-                        {{ $image1000w := $original.Resize "1000x" }}
-                        {{ $image1200w := $original.Resize "1200x" }}
-                        {{ $image1500w := $original.Resize "1500x" }}
-                        {{ $image1800w := $original.Resize "1800x" }}
-                        {{ $image2400w := $original.Resize "2400x" }}
-                        <img
-                        alt="{{ $original }}"
-                        data-sizes="auto"
-                        data-srcset="        
+  {{ range .Data.Pages}}
+  <div class="flex flex-col">
+    {{ $image := string .Params.image }} {{ $original := .Resources.GetMatch
+    $image }} {{ if $original }} {{ $image295w := $original.Resize "295x" }} {{
+    $image394w := $original.Resize "394x" }} {{ $image590w := $original.Resize
+    "590x" }} {{ $image700w := $original.Resize "700x" }} {{ $image800w :=
+    $original.Resize "800x" }} {{ $image1000w := $original.Resize "1000x" }} {{
+    $image1200w := $original.Resize "1200x" }} {{ $image1500w :=
+    $original.Resize "1500x" }} {{ $image1800w := $original.Resize "1800x" }} {{
+    $image2400w := $original.Resize "2400x" }}
+    <img
+      alt="{{ $original }}"
+      data-sizes="auto"
+      data-srcset="        
                         {{ $image295w.RelPermalink }}  295w,
                         {{ $image394w.RelPermalink }}  394w,
                         {{ $image590w.RelPermalink }}  590w,
@@ -36,16 +33,25 @@
                         {{ $image1800w.RelPermalink }}  1800w,
                         {{ $image2400w.RelPermalink }}  2400w,
                         "
-                        data-src="{{ $image700w.RelPermalink }}"
-                        class="lazyload" />
-                        {{end }}
-           
-            
-        
-         <a class="w-full text-md font-robmono pt-6  leading-6" href="{{ .Permalink}}">{{.Title}}</a>
-         <div class="text-md text-gray-600 pt-2 pb-8">{{ .Params.date.Format "January 2, 2006" }}</div>
-         <a class="uppercase text-sm font-robmono underline leading-6" href="{{.Permalink}}">Continue Reading</a>
-        </div>
+      data-src="{{ $image700w.RelPermalink }}"
+      class="lazyload"
+    />
     {{end }}
+
+    <a
+      class="w-full text-base font-robmono pt-6 leading-6"
+      href="{{ .Permalink}}"
+      >{{.Title}}</a
+    >
+    <div class="text-base text-gray-600 pt-2 pb-8">
+      {{ .Params.date.Format "January 2, 2006" }}
+    </div>
+    <a
+      class="uppercase text-sm font-robmono underline leading-6"
+      href="{{.Permalink}}"
+      >Continue Reading</a
+    >
+  </div>
+  {{end }}
 </div>
 {{end }}
